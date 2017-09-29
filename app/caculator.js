@@ -27,7 +27,6 @@ module.exports = {
                 pointSet[x] = y;
             }
         }
-        points.push([0,0]);
         for (var x in pointSet) {
             points.push([x,pointSet[x]]);
         }
