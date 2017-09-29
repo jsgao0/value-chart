@@ -10,11 +10,10 @@ module.exports = {
         var accumulateValue = 0;
         var points = [];
         tasks.map(function(task){
-            var endDate = task.startDate + (task.workingDays * DAY);
-            var x = (endDate-initPoint)/DAY;       
-            points.push([x,accumulateValue]);
+            var endDate = task.startDate + (task.workingDays * DAY);      
+            points.push([endDate, accumulateValue]);
             accumulateValue += task.value;
-            points.push([x+1, accumulateValue]);
+            points.push([endDate+DAY, accumulateValue]);
         });
         var pointSet = {};
         while (points.length > 0) {
