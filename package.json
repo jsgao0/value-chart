@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "webpack",
+    "start": "./target/bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,6 +23,11 @@
   },
   "homepage": "https://github.com/jsgao0/value-chart",
   "dependencies": {
-    "d3": "^4.10.2"
+    "d3": "^4.10.2",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.1"
   }
 }
