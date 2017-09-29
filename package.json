@@ -1,0 +1,23 @@
+{
+  "name": "value-chart",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jsgao0/value-chart.git"
+  },
+  "keywords": [
+    "agile",
+    "value"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jsgao0/value-chart/issues"
+  },
+  "homepage": "https://github.com/jsgao0/value-chart"
+}
