@@ -1,5 +1,29 @@
 (function(w) {
     'use strict';
+    var caculator = require('./caculator');
+    var data = caculator.calculate({
+           tasks: [
+              {
+                  "name": "task1",
+                  "workingDays": 8,
+                  "startDate": 1234141312,
+                  "value": 100
+              },
+              {
+                "name": "task1",
+                  "workingDays": 5,
+                  "startDate": 1320541312,
+                  "value": 10
+              },
+              {
+                "name": "task1",
+                  "workingDays": 3,
+                  "startDate": 1234141312,
+                  "value": 10
+              }
+           ]
+        });
+        console.log(data);
     window.onload = function() {
         var d3 = require('d3'),
             svg = d3.select("svg"),
@@ -27,7 +51,8 @@
 
             g.append("path")
                 .datum(data)
-                .attr("fill", "steelblue")
+                .attr("stroke", "black")
+                .attr("fill", "none")
                 .attr("d", area);
 
             g.append("g")
@@ -42,7 +67,7 @@
                 .attr("y", 6)
                 .attr("dy", "0.71em")
                 .attr("text-anchor", "end")
-                .text("Price ($)");
+                .text("Total Value");
         });
     };
 })(window);
