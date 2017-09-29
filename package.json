@@ -24,6 +24,7 @@
   "homepage": "https://github.com/jsgao0/value-chart",
   "dependencies": {
     "d3": "^4.10.2",
+    "moment": "^2.18.1",
     "path": "^0.12.7"
   },
   "devDependencies": {

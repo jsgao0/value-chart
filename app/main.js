@@ -1,29 +1,7 @@
 (function(w) {
     'use strict';
-    var caculator = require('./caculator');
-    var data = caculator.calculate({
-           tasks: [
-              {
-                  "name": "task1",
-                  "workingDays": 8,
-                  "startDate": 1234141312,
-                  "value": 100
-              },
-              {
-                "name": "task1",
-                  "workingDays": 5,
-                  "startDate": 1320541312,
-                  "value": 10
-              },
-              {
-                "name": "task1",
-                  "workingDays": 3,
-                  "startDate": 1234141312,
-                  "value": 10
-              }
-           ]
-        });
-        console.log(data);
+    var caculator = require('./caculator'),
+        moment = require('moment');
     window.onload = function() {
         var d3 = require('d3'),
             svg = d3.select("svg"),
@@ -38,13 +16,34 @@
                 .x(function(d) { return x(d.date); })
                 .y1(function(d) { return y(d.close); });
 
-        d3.tsv("data/data.tsv", function(d) {
-            d.date = parseTime(d.date);
-            d.close = +d.close;
-            return d;
-        }, function(error, data) {
-            if (error) throw error;
-
+        var tasks = caculator.calculate({
+            tasks: [
+            {
+                "name": "task1",
+                "workingDays": 8,
+                "startDate": 1234141312,
+                "value": 100
+            },
+            {
+                "name": "task1",
+                "workingDays": 5,
+                "startDate": 1320541312,
+                "value": 10
+            },
+            {
+                "name": "task1",
+                "workingDays": 3,
+                "startDate": 1234141312,
+                "value": 10
+            }
+            ]
+        }).map(function(d) {
+            return {
+                date: parseTime(moment(+d[0]).format('D-MMM-YY')),
+                close: d[1]
+            };
+        });
+        (function(data) {
             x.domain(d3.extent(data, function(d) { return d.date; }));
             y.domain([0, d3.max(data, function(d) { return d.close; })]);
             area.y0(y(0));
@@ -68,6 +67,6 @@
                 .attr("dy", "0.71em")
                 .attr("text-anchor", "end")
                 .text("Total Value");
-        });
+        })(tasks);
     };
 })(window);
