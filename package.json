@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/jsgao0/value-chart/issues"
   },
-  "homepage": "https://github.com/jsgao0/value-chart"
+  "homepage": "https://github.com/jsgao0/value-chart",
+  "dependencies": {
+    "d3": "^4.10.2"
+  }
 }
