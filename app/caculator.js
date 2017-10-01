@@ -1,9 +1,4 @@
-module.exports = {
-    calculate: function (data) {
-        var tasks = data.tasks;
-        return this.getPoints(tasks);
-    },
-    getPoints: function (tasks) {
+function getPoints(tasks) {
         var DAY = 86400000;
         tasks = tasks.sort(function(a,b){return (a.startDate + a.workingDays * DAY) - (b.startDate + b.workingDays * DAY)});
         var initPoint = tasks[0].startDate;
@@ -31,5 +26,10 @@ module.exports = {
             points.push([x,pointSet[x]]);
         }
         return points;
+}
+module.exports = {
+    calculate: function (data) {
+        var tasks = data.tasks;
+        return getPoints(tasks);
     }
 };
